@@ -4,19 +4,147 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#20213E"
     tools:context=".MainActivity">
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+    <ImageView
+        android:id="@+id/iVbanner"
+        android:layout_width="412dp"
+        android:layout_height="165dp"
+        android:layout_marginBottom="19dp"
+        android:contentDescription="Banner"
+        app:layout_constraintBottom_toTopOf="@+id/imgLol"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/banner" />
 
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center" />
-    </FrameLayout>
+    <Button
+        android:id="@+id/btnLol"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:text="League of Legends"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgLol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgLol"
+        app:layout_constraintTop_toTopOf="@+id/imgLol" />
 
+    <Button
+        android:id="@+id/btnFifa"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:text="FIFA"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFifa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgFifa"
+        app:layout_constraintTop_toTopOf="@+id/imgFifa" />
+
+    <Button
+        android:id="@+id/btnCsgo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:text="Counter Strike GO"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgCsgo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgCsgo"
+        app:layout_constraintTop_toTopOf="@+id/imgCsgo" />
+
+    <Button
+        android:id="@+id/btnClash"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:text="Clash Royale"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgCr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgCr"
+        app:layout_constraintTop_toTopOf="@+id/imgCr" />
+
+    <ImageView
+        android:id="@+id/imgFifa"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="44dp"
+        android:background="#999AA4"
+        app:layout_constraintBottom_toTopOf="@+id/txtAcercaDe"
+        app:layout_constraintEnd_toStartOf="@+id/btnFifa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCsgo"
+        app:srcCompat="@mipmap/fifa" />
+
+    <ImageView
+        android:id="@+id/imgCsgo"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgFifa"
+        app:layout_constraintEnd_toStartOf="@+id/btnCsgo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCr"
+        app:srcCompat="@mipmap/csgo" />
+
+    <ImageView
+        android:id="@+id/imgCr"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="27dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCsgo"
+        app:layout_constraintEnd_toStartOf="@+id/btnClash"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLol"
+        app:srcCompat="@mipmap/cr" />
+
+    <ImageView
+        android:id="@+id/imgLol"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgCr"
+        app:layout_constraintEnd_toStartOf="@+id/btnLol"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iVbanner"
+        app:srcCompat="@mipmap/lol" />
+
+    <TextView
+        android:id="@+id/txtAcercaDe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="102dp"
+        android:clickable="true"
+        android:onClick="btnAcercaDe_clicked"
+        android:text="Acerca de nosotros..."
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgFifa"
+        app:layout_constraintTop_toBottomOf="@+id/imgFifa" />
 </android.support.constraint.ConstraintLayout>
