@@ -1,5 +1,6 @@
 package com.example.proyectofinal;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,5 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnAcercaDe_clicked(View v){
         Toast.makeText(getApplicationContext(), "Proyecto desarrollado por José Ramón Atienzar y Samuel Alameda", Toast.LENGTH_SHORT).show();
+    }
+
+    public void btnLol_clicked(View v){
+        Intent intent = new Intent(v.getContext(), LeagueOfLegends.class);
+        startActivityForResult(intent, 0);
     }
 }
