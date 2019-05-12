@@ -30,23 +30,33 @@ public class MainActivity extends AppCompatActivity {
         btnCsgo = (Button)findViewById(R.id.btnCsgo);
         btnFifa = (Button)findViewById(R.id.btnFifa);
         txtAcercaDe = (TextView)findViewById(R.id.txtAcercaDe);
-
-        //this.listView = (ListView)findViewById(R.id.listView);
-        //DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        //databaseAccess.open();
-        //List<String> juegos = databaseAccess.getJuegos();
-        //databaseAccess.close();
-
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, juegos);
-        //this.listView.setAdapter(adapter);
     }
 
     public void btnAcercaDe_clicked(View v){
         Toast.makeText(getApplicationContext(), "Proyecto desarrollado por José Ramón Atienzar y Samuel Alameda", Toast.LENGTH_SHORT).show();
     }
 
+    public void btnFifa_clicked(View v){
+        Intent intent = new Intent(v.getContext(), ElegirCompeticion.class);
+        intent.putExtra("juego", "fifa");
+        startActivity(intent);
+    }
+
+    public void btnCr_clicked(View v){
+        Intent intent = new Intent(v.getContext(), ElegirCompeticion.class);
+        intent.putExtra("juego", "cr");
+        startActivity(intent);
+    }
+
+    public void btnCsgo_clicked(View v){
+        Intent intent = new Intent(v.getContext(), ElegirCompeticion.class);
+        intent.putExtra("juego", "csgo");
+        startActivity(intent);
+    }
+
     public void btnLol_clicked(View v){
-        Intent intent = new Intent(v.getContext(), LeagueOfLegends.class);
-        startActivityForResult(intent, 0);
+        Intent intent = new Intent(v.getContext(), ElegirCompeticion.class);
+        intent.putExtra("juego", "lol");
+        startActivity(intent);
     }
 }

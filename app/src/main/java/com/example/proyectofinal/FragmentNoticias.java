@@ -8,16 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentLolRanking extends Fragment {
+public class FragmentNoticias extends Fragment {
+
     View view;
 
-    public FragmentLolRanking() {
+    public FragmentNoticias() {
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.lolranking_fragment, container, false);
+
+        view = inflater.inflate(R.layout.noticias_fragment, container, false);
         return view;
     }
 }

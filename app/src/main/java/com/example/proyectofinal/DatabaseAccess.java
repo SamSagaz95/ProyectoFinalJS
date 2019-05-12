@@ -45,4 +45,76 @@ public class DatabaseAccess {
         cursor.close();
         return list;
     }
+
+    public List<String> getEquipos(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT nombre FROM Equipos WHERE competicion = "+ competicion, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<String> getIconEquipos(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT icono FROM Equipos WHERE competicion = "+ competicion, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<String> getCompeticiones(int juego) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT nombre FROM Competiciones WHERE juego = "+ juego, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<String> getIconCompeticiones(int juego) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT icono FROM Competiciones WHERE juego = "+ juego, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<String> getIdCompeticiones(int juego) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT idCompeticion FROM Competiciones WHERE juego = "+ juego, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public String getIconCompeticion(int competicion) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT icono FROM Competiciones WHERE idCompeticion = "+ competicion, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icon =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return icon;
+    }
 }
