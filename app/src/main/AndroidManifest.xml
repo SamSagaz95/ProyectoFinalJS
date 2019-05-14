@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ElegirCompeticion"></activity>
+        <activity android:name=".RosterEquipo"></activity>
+        <activity android:name=".ElegirCompeticion" />
         <activity android:name=".Competicion" />
         <activity android:name=".MainActivity">
             <intent-filter>

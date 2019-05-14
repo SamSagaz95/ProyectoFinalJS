@@ -39,6 +39,7 @@ public class FragmentEquipos extends Fragment {
             DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
             databaseAccess.open();
             List<String> equipos = databaseAccess.getEquipos(competicion);
+            final List<String> idEquipos = databaseAccess.getIdEquipos(competicion);
             List<String> iconEquipos = databaseAccess.getIconEquipos(competicion);
 
             LinearLayout lequipos = (LinearLayout)getView().findViewById(R.id.lequipos);
@@ -64,8 +65,8 @@ public class FragmentEquipos extends Fragment {
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(v.getContext(), Competicion.class);
-
+                        Intent intent = new Intent(v.getContext(), RosterEquipo.class);
+                        intent.putExtra("idEquipo", idEquipos.get(pos));
                         startActivity(intent);
                     }
                 });
@@ -73,8 +74,7 @@ public class FragmentEquipos extends Fragment {
                 lequipos.addView(ll);
             }
             databaseAccess.close();
-        }
-        else{
+        } else{
             Toast.makeText(getActivity(), "Error al obtener id de la competición", Toast.LENGTH_SHORT).show();
         }
     }

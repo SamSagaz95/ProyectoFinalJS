@@ -58,6 +58,18 @@ public class DatabaseAccess {
         return list;
     }
 
+    public List<String> getIdEquipos(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT idEquipo FROM Equipos WHERE competicion = "+ competicion, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
     public List<String> getIconEquipos(int competicion) {
         List<String> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT icono FROM Equipos WHERE competicion = "+ competicion, null);
@@ -109,6 +121,42 @@ public class DatabaseAccess {
     public String getIconCompeticion(int competicion) {
         String icon = "";
         Cursor cursor = database.rawQuery("SELECT icono FROM Competiciones WHERE idCompeticion = "+ competicion, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icon =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return icon;
+    }
+
+    public String getIconEquipo(int equipo) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT icono FROM Equipos WHERE idEquipo = "+ equipo, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icon =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return icon;
+    }
+
+    public String getIconPaisEquipo(int equipo) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT bandera From Paises Where idPais = (SELECT pais FROM Equipos Where idEquipo = "+ equipo +")", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icon =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return icon;
+    }
+
+    public String getNameEquipo(int equipo) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT nombre From Equipos Where idEquipo = "+ equipo , null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             icon =cursor.getString(0);
