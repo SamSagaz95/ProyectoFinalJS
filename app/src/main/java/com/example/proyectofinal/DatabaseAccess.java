@@ -155,8 +155,128 @@ public class DatabaseAccess {
     }
 
     public String getNameEquipo(int equipo) {
-        String icon = "";
+        String name = "";
         Cursor cursor = database.rawQuery("SELECT nombre From Equipos Where idEquipo = "+ equipo , null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            name =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return name;
+    }
+
+    public List<String> getJugadores(int equipo) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT nombre From Jugadores Where equipo = "+ equipo , null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<String> getIconJugadores(int equipo) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT foto From Jugadores Where equipo = "+ equipo , null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<String> getIdJugadores(int equipo) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT idJugador From Jugadores Where equipo = "+ equipo , null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public String getIconPaisJugador(int jugador) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT bandera From Paises Where idPais = (SELECT pais FROM Jugadores Where idJugador = "+ jugador +")", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icon =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return icon;
+    }
+
+    public String getIconJugador(int jugador) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT foto From Jugadores Where idJugador = "+ jugador, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icon =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return icon;
+    }
+
+    public String getIdEquipoJugador(int jugador) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT equipo From Jugadores Where idJugador = "+ jugador, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icon =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return icon;
+    }
+
+    public String getNombreJugador(int jugador) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT nombre From Jugadores Where idJugador = "+ jugador, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icon =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return icon;
+    }
+
+    public String getEdadJugador(int jugador) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT edad From Jugadores Where idJugador = "+ jugador, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icon =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return icon;
+    }
+
+    public String getPosicionJugador(int jugador) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT rol From Jugadores Where idJugador = "+ jugador, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            icon =cursor.getString(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return icon;
+    }
+
+    public String getPuntuacionJugador(int jugador) {
+        String icon = "";
+        Cursor cursor = database.rawQuery("SELECT puntuacion From Jugadores Where idJugador = "+ jugador, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             icon =cursor.getString(0);
