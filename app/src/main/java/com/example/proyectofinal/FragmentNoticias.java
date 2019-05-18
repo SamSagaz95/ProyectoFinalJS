@@ -1,15 +1,23 @@
 package com.example.proyectofinal;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.Size;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -56,6 +64,13 @@ public class FragmentNoticias extends Fragment {
                 img.setLayoutParams(new LinearLayout.LayoutParams(200, 200));
                 ll.addView(img);
 
+                String cuerpo = cuerpos.get(i).substring(0,59);
+                TextView txtNoticia = new TextView(getActivity());
+                txtNoticia.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200));
+                txtNoticia.setTextSize(18);
+
+                txtNoticia.setText(Html.fromHtml("<b>"+titulos.get(i)+"</b><br>"+cuerpo+"<b>...Seguir Leyendo</b>"));
+                ll.addView(txtNoticia);
 
 
                 final int pos = i;
