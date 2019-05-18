@@ -1,6 +1,5 @@
 package com.example.proyectofinal;
 
-import android.media.Image;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -42,8 +41,8 @@ public class Competicion extends AppCompatActivity {
         ViewPagerAdapterLol adapter = new ViewPagerAdapterLol(getSupportFragmentManager());
         //Añade las pestañas
         adapter.addFragment(new FragmentNoticias(), "Noticias");
-        adapter.addFragment(new FragmentRanking(), "Ranking");
-        adapter.addFragment(new FragmentEquipos(), "Equipos");
+        adapter.addFragment(new FragmentEquipos(), "Ranking");
+        adapter.addFragment(new FragmentEventos(), "Eventos");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -38,9 +39,10 @@ public class FragmentEquipos extends Fragment {
             int competicion = Integer.parseInt(parametros.getString("competicion"));
             DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
             databaseAccess.open();
-            List<String> equipos = databaseAccess.getEquipos(competicion);
-            final List<String> idEquipos = databaseAccess.getIdEquipos(competicion);
-            List<String> iconEquipos = databaseAccess.getIconEquipos(competicion);
+            List<String> equipos = databaseAccess.getEquiposOrdenados(competicion);
+            final List<String> idEquipos = databaseAccess.getIdEquiposOrdenados(competicion);
+            List<String> iconEquipos = databaseAccess.getIconEquiposOrdenados(competicion);
+            List<String> puntosEquipos = databaseAccess.getPuntosEquiposOrdenados(competicion);
 
             LinearLayout lequipos = (LinearLayout)getView().findViewById(R.id.lequipos);
 
@@ -48,6 +50,13 @@ public class FragmentEquipos extends Fragment {
                 LinearLayout ll = new LinearLayout(getActivity());
                 ll.setOrientation(LinearLayout.HORIZONTAL);
                 ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+                TextView txtPosicion = new TextView(getActivity());
+                txtPosicion.setLayoutParams(new LinearLayout.LayoutParams(120, 200));
+                txtPosicion.setTextSize(25);
+                int posicion=i+1;
+                txtPosicion.setText(posicion+"º");
+                ll.addView(txtPosicion);
 
                 ImageView img = new ImageView(getActivity());
                 String iconName = iconEquipos.get(i);
@@ -58,7 +67,7 @@ public class FragmentEquipos extends Fragment {
                 ll.addView(img);
 
                 Button btn = new Button(getActivity());
-                btn.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200));
+                btn.setLayoutParams(new LinearLayout.LayoutParams(600, 200));
                 btn.setText(equipos.get(i).toString());
 
                 final int pos = i;
@@ -71,6 +80,14 @@ public class FragmentEquipos extends Fragment {
                     }
                 });
                 ll.addView(btn);
+
+                TextView txtPuntos = new TextView(getActivity());
+                txtPuntos.setLayoutParams(new LinearLayout.LayoutParams(200, 200));
+                txtPuntos.setTextSize(20);
+
+                txtPuntos.setText(puntosEquipos.get(i)+" pts");
+                ll.addView(txtPuntos);
+
                 lequipos.addView(ll);
             }
             databaseAccess.close();

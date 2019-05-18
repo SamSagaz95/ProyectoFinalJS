@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Jugador"></activity>
+        <activity android:name=".Noticia"></activity>
+        <activity android:name=".Jugador" />
         <activity android:name=".RosterEquipo" />
         <activity android:name=".ElegirCompeticion" />
         <activity android:name=".Competicion" />

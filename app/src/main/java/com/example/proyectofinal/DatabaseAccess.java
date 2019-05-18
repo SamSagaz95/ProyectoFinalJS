@@ -57,6 +57,17 @@ public class DatabaseAccess {
         cursor.close();
         return list;
     }
+    public List<String> getEquiposOrdenados(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT nombre FROM Equipos WHERE competicion = "+ competicion +" ORDER BY puntuacion  DESC", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
 
     public List<String> getIdEquipos(int competicion) {
         List<String> list = new ArrayList<>();
@@ -69,10 +80,186 @@ public class DatabaseAccess {
         cursor.close();
         return list;
     }
+    public List<String> getIdEquiposOrdenados(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT idEquipo FROM Equipos WHERE competicion = "+ competicion +" ORDER BY puntuacion DESC", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
 
     public List<String> getIconEquipos(int competicion) {
         List<String> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT icono FROM Equipos WHERE competicion = "+ competicion, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getIconEquiposOrdenados(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT icono FROM Equipos WHERE competicion = "+ competicion  +" ORDER BY puntuacion DESC", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getPuntosEquiposOrdenados(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT puntuacion FROM Equipos WHERE competicion = "+ competicion  +" ORDER BY puntuacion DESC", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getProximaJornada(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT jornada FROM Resultados WHERE competicion = "+ competicion +" AND disputado = 0 ORDER BY jornada", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getIdEvento(int jornada, int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT idPartido FROM Resultados WHERE jornada = "+ jornada +" AND competicion = "+ competicion +" AND disputado = 0 ", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getLocalEvento(int jornada, int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT local FROM Resultados WHERE jornada = "+ jornada +" AND competicion = "+ competicion+" AND disputado = 0 ", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getVisitanteEvento(int jornada, int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT visitante FROM Resultados WHERE jornada = "+ jornada +" AND competicion = "+ competicion+" AND disputado = 0 ", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getFechaEvento(int jornada , int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT fecha FROM Resultados WHERE jornada = "+ jornada +" AND competicion = "+ competicion +" AND disputado = 0 ", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getIcono(int id) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT icono FROM Equipos WHERE idEquipo = " +id, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getIdNoticia(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT IdNoticia FROM Noticias WHERE competicion = " +competicion, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getTituloNoticia(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT Titulo FROM Noticias WHERE competicion = " +competicion, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getCuerpoNoticia(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT Cuerpo FROM Noticias WHERE competicion = " +competicion, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+}
+    public List<String> getFotoNoticia(int competicion) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT Foto FROM Noticias WHERE competicion = " +competicion, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getTituloNoticiaByID(int idNoticia) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT Titulo FROM Noticias WHERE IdNoticia = " +idNoticia, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getCuerpoNoticiaByID(int idNoticia) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT Cuerpo FROM Noticias WHERE IdNoticia = " +idNoticia, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getFotoNoticiaByID(int idNoticia) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT Foto FROM Noticias WHERE IdNoticia = " +idNoticia, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
