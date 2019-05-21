@@ -83,6 +83,9 @@ public class LoginUsuarios extends AppCompatActivity {
                         progressDialog.dismiss();
                         if (task.isSuccessful()){
                             Intent intent = new Intent(context, MainActivity.class);
+                            intent.putExtra("actualUser", etEmail.getText().toString());
+                            etEmail.setText("");
+                            etPassword.setText("");
                             startActivityForResult(intent, 0);
                         }
                     }

@@ -1,5 +1,10 @@
 package com.example.proyectofinal;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Usuarios {
 
     public String uid;
@@ -18,5 +23,17 @@ public class Usuarios {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.puntuacion = puntuacion;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("uid", uid);
+        result.put("email", email);
+        result.put("nombre", nombre);
+        result.put("apellidos", apellidos);
+        result.put("puntuacion", puntuacion);
+
+        return result;
     }
 }

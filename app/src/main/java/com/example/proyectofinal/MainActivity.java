@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,11 +21,21 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCsgo;
     private Button btnFifa;
     private TextView txtAcercaDe;
+    private FirebaseAuth firebaseAuth;
+
+    private String usuarioActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Bundle parametros = getIntent().getExtras();
+        if (parametros != null) {
+            usuarioActual = parametros.getString("actualUser");
+        }
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         btnLol = (Button)findViewById(R.id.btnLol);
         btnClash = (Button)findViewById(R.id.btnClash);
@@ -57,6 +69,19 @@ public class MainActivity extends AppCompatActivity {
     public void btnLol_clicked(View v){
         Intent intent = new Intent(v.getContext(), ElegirCompeticion.class);
         intent.putExtra("juego", "lol");
+        startActivity(intent);
+    }
+
+    public void btnSignOut_clicked(View v){
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(getApplicationContext(), "Se ha cerrado la sesión de: "+ usuarioActual, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(v.getContext(), LoginUsuarios.class);
+        startActivity(intent);
+    }
+
+    public void btnPerfil_clicked(View v){
+        Intent intent = new Intent(v.getContext(), Perfil.class);
+        intent.putExtra("actualUser", usuarioActual.toString());
         startActivity(intent);
     }
 }
