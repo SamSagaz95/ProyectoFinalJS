@@ -44,7 +44,7 @@ public class RegistroUsuarios extends AppCompatActivity {
         etNombre = (EditText)findViewById(R.id.etNombre);
         etApellidos = (EditText)findViewById(R.id.etApellidos);
         etPassword = (EditText)findViewById(R.id.etPassword);
-        btnRegistro = (Button)findViewById(R.id.btnRegistrar);
+        btnRegistro = (Button)findViewById(R.id.btnLogin);
         progressDialog = new ProgressDialog(this);
     }
 

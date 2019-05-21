@@ -110,7 +110,7 @@
                 android:textColorLink="@color/design_default_color_primary" />
 
             <Button
-                android:id="@+id/btnRegistrar"
+                android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
