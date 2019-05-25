@@ -159,6 +159,39 @@ public class DatabaseAccess {
         cursor.close();
         return list;
     }
+    public List<String> getLocal(int id) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT local FROM Resultados WHERE idPartido=" +id , null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getVisitante(int id) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT visitante FROM Resultados WHERE idPartido=" +id, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public List<String> getLink(int id) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT link FROM Resultados WHERE idPartido=" +id, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
     public List<String> getVisitanteEvento(int jornada, int competicion) {
         List<String> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT visitante FROM Resultados WHERE jornada = "+ jornada +" AND competicion = "+ competicion+" AND disputado = 0 ", null);
@@ -184,6 +217,18 @@ public class DatabaseAccess {
     public List<String> getIcono(int id) {
         List<String> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT icono FROM Equipos WHERE idEquipo = " +id, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<String> getNombre(int id) {
+        List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT nombre FROM Equipos WHERE idEquipo = " +id, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));

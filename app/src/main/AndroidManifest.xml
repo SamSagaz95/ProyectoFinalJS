@@ -7,6 +7,8 @@
         android:name="android.permission.GET_ACCOUNTS"
         android:maxSdkVersion="22" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Perfil"></activity>
+        <activity android:name=".Licencia"></activity>
+        <activity android:name=".Eventos" />
+        <activity android:name=".Ranking_Usuarios" />
+        <activity android:name=".Perfil" />
         <activity android:name=".LoginUsuarios">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

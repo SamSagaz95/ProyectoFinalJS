@@ -51,24 +51,28 @@ public class MainActivity extends AppCompatActivity {
     public void btnFifa_clicked(View v){
         Intent intent = new Intent(v.getContext(), ElegirCompeticion.class);
         intent.putExtra("juego", "fifa");
+        intent.putExtra("user", usuarioActual);
         startActivity(intent);
     }
 
     public void btnCr_clicked(View v){
         Intent intent = new Intent(v.getContext(), ElegirCompeticion.class);
         intent.putExtra("juego", "cr");
+        intent.putExtra("user", usuarioActual);
         startActivity(intent);
     }
 
     public void btnCsgo_clicked(View v){
         Intent intent = new Intent(v.getContext(), ElegirCompeticion.class);
         intent.putExtra("juego", "csgo");
+        intent.putExtra("user", usuarioActual);
         startActivity(intent);
     }
 
     public void btnLol_clicked(View v){
         Intent intent = new Intent(v.getContext(), ElegirCompeticion.class);
         intent.putExtra("juego", "lol");
+        intent.putExtra("user", usuarioActual);
         startActivity(intent);
     }
 
@@ -84,4 +88,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("actualUser", usuarioActual.toString());
         startActivity(intent);
     }
+    public void btnCreative_clicked(View v) {
+        Intent intent = new Intent(v.getContext(), Licencia.class);
+        startActivity(intent);
+    }
+
 }

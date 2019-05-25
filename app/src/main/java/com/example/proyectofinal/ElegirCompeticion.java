@@ -16,7 +16,7 @@ public class ElegirCompeticion extends AppCompatActivity {
     ImageView imgJuego;
     List<String> competiciones, iconCompeticiones, idCompeticiones;
     LinearLayout lCompeticiones;
-
+    String usuarioActual;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +32,7 @@ public class ElegirCompeticion extends AppCompatActivity {
             databaseAccess.open();
 
             String juego = parametros.getString("juego");
+            usuarioActual = parametros.getString("user");
             switch (juego){
                 case "lol":
                     imgJuego.setImageResource(R.mipmap.lolbanner);
@@ -83,6 +84,7 @@ public class ElegirCompeticion extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(v.getContext(), Competicion.class);
                         intent.putExtra("competicion", idCompeticiones.get(pos));
+                        intent.putExtra("user", usuarioActual);
                         startActivity(intent);
                     }
                 });

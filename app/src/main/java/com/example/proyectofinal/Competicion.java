@@ -1,5 +1,5 @@
 package com.example.proyectofinal;
-
+import android.app.Application;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -14,7 +14,7 @@ public class Competicion extends AppCompatActivity {
     private ViewPager viewPager;
     private ImageView imgView;
 
-
+    private String usuarioActual;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +33,8 @@ public class Competicion extends AppCompatActivity {
             String icon = iconName.substring(0, iconName.length()-4);
             int id = this.getResources().getIdentifier(icon, "mipmap", getPackageName());
             imgView.setImageResource(id);
+
+
         }
 
         tabLayout = (TabLayout)findViewById(R.id.tablayout);
@@ -43,8 +45,8 @@ public class Competicion extends AppCompatActivity {
         adapter.addFragment(new FragmentNoticias(), "Noticias");
         adapter.addFragment(new FragmentEquipos(), "Ranking");
         adapter.addFragment(new FragmentEventos(), "Eventos");
-
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+
 }
