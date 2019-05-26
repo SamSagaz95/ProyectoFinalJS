@@ -186,6 +186,13 @@ public class Eventos extends AppCompatActivity {
 
                 documento.add(imagen);
 
+                Bitmap bitmap1 = BitmapFactory.decodeResource(this.getResources(),
+                        R.drawable.qr);
+                ByteArrayOutputStream stream1 = new ByteArrayOutputStream();
+                bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, stream1);
+                Image imagen1 = Image.getInstance(stream1.toByteArray());
+
+                documento.add(imagen1);
 
 
 
