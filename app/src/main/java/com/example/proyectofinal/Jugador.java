@@ -16,7 +16,7 @@ public class Jugador extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jugador);
 
-        tvNombre = (TextView)findViewById(R.id.tvPosicion);
+        tvNombre = (TextView)findViewById(R.id.tvNombre);
         tvEdad = (TextView)findViewById(R.id.tvEdad);
         tvPosicion = (TextView)findViewById(R.id.tvPosicion);
         tvPuntuacion = (TextView)findViewById(R.id.tvPuntuacion);

@@ -157,14 +157,6 @@
                 android:onClick="btnModificar_clicked"
                 android:text="Modificar datos" />
 
-            <Button
-                android:id="@+id/verRanking"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:onClick="btnRanking_clicked"
-                android:text="Ranking Usuarios" />
-
         </LinearLayout>
     </ScrollView>
 

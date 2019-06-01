@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,6 +21,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
@@ -108,6 +113,42 @@ public class Eventos extends AppCompatActivity {
 
         }
         ClaveVoto=uidUser+idEvento;
+        DatabaseReference votosRef =  FirebaseDatabase.getInstance().getReference().child("votos").child(ClaveVoto);
+        votosRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                if(dataSnapshot!=null){
+                    Button btn1=(Button)findViewById(R.id.btnLocal);
+                    Button btn2=(Button)findViewById(R.id.btnVisitante);
+                    btn1.setVisibility(View.INVISIBLE);
+                    btn2.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
 
 
 
@@ -132,6 +173,10 @@ public class Eventos extends AppCompatActivity {
     public void btnVisitante_clicked(View v){
        Votos voto = new Votos(uidUser, idEvento, 2);
         mDatabase.child("votos").child(ClaveVoto).setValue(voto);
+        Button btn1=(Button)findViewById(R.id.btnLocal);
+        Button btn2=(Button)findViewById(R.id.btnVisitante);
+        btn1.setVisibility(View.INVISIBLE);
+        btn2.setVisibility(View.INVISIBLE);
         generarPDF(nomVisitante.get(0));
     }
     public void generarPDF(String votado){

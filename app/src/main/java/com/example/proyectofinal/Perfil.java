@@ -133,9 +133,5 @@ public class Perfil extends AppCompatActivity {
                 });
     }
 
-    public void btnRanking_clicked(View v){
-        Intent intent = new Intent(v.getContext(), Ranking_Usuarios.class);
-        intent.putExtra("actualUser", usuarioActual.toString());
-        startActivity(intent);
-    }
+
 }
